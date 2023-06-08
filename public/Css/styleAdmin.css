@@ -1,0 +1,112 @@
+#footer {
+  background-color: rgb(234, 237, 239);
+  border: 1px solid rgb(206, 206, 206);
+  margin-top: 150px;
+  padding: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Vista Admin Producto */
+
+.botones {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.contenedores {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 3%;
+}
+
+.imgInicio {
+  padding: 2%;
+}
+
+.titulo {
+  text-align: center;
+}
+
+/* Menu desplegable */
+
+.marginlefting {
+  margin-left: 60px !important;
+}
+
+.displaynone {
+  display: none !important;
+}
+
+.displayblock {
+  display: block !important;
+}
+
+.sidebar .item i {
+  font-size: 24px;
+  margin-top: -5px !important;
+}
+
+.logo {
+  text-align: center;
+  height: 82px !important;
+  padding: 10px !important;
+}
+
+.logo img {
+  width: 65px !important;
+  height: 65px !important;
+  border-radius: 100px;
+}
+
+.title.item {
+  padding: .92857143em 1.14285714em !important;
+}
+
+.dropdown .menu .header {
+  padding-top: 3.9px !important;
+  padding-bottom: 3.9px !important;
+}
+
+.lacaraotr {
+  margin-left: 0;
+  width: 0;
+  height: 10px;
+  padding: 0;
+  float: left;
+}
+
+@media only screen and (max-width: 1127px) {
+  .ui.inverted.sidebar.vertical.left.menu.overlay.visible {
+    display: none;
+  }
+
+  .logo_movil {
+    width: 65px !important;
+    height: 65px !important;
+    border-radius: 100px;
+  }
+
+  .ui.inverted.vertical.icon.menu {
+    margin: 0;
+  }
+
+  #footer {
+    margin-left: 10%;
+
+  }
+
+}
+
+@media only screen and (min-width: 1127px) {
+  .ui.inverted.vertical.icon.menu {
+    display: none;
+
+  }
+
+  #footer {
+    margin-left: 19%;
+  }
+}

@@ -1,0 +1,201 @@
+/* Estilos del menu de navegacion */
+
+#content {
+    min-height: 100px;
+    display: none;
+}
+
+.ui.grid {
+    padding: 0 !important;
+}
+
+.pushable.segment {
+    margin: 0 !important;
+}
+
+/* Estilos del pie de pagina */
+#footer {
+    background-color: rgb(234, 237, 239);
+    border: 1px solid rgb(206, 206, 206);
+    margin-top: 100px;
+    padding: 50px;
+}
+
+/* Productos responsive */
+.caja1 {
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-bottom: 75px;
+}
+
+.caja2 {
+    padding-right: 15%;
+    padding-left: 15%;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom: 75px;
+}
+
+.tituloCarta {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.tituloCarta2 {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.ui.piled.segments {
+    box-shadow: 10px 10px 10px rgb(227, 227, 227);
+}
+
+/* Carrito responsive */
+.caja3 {
+    padding-right: 8%;
+    padding-left: 8%;
+}
+
+/* Restaurantes responsive */
+.caja4 {
+    margin-top: 75px;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-bottom: 75px;
+}
+
+.caja5 {
+    margin-top: 75px;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-bottom: 75px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/* Estilos del inicio(home) */
+.texto {
+    padding-top: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.span1 {
+
+    color: rgb(255, 0, 0);
+}
+
+span {
+    color: rgb(78, 78, 78);
+}
+
+h1 {
+    text-align: center;
+}
+
+.botones {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.ui.very.basic.table {
+    text-align: center;
+}
+
+.ui.card {
+    text-align: center;
+}
+
+.ui.tiny.input {
+    width: 70px;
+}
+
+.layout {
+    width: 800px;
+    background: #1b1b1b;
+    margin: 20px auto;
+    position: relative;
+}
+
+#menu-slider-container {
+    width: 100%;
+    overflow: hidden;
+    height: 60px;
+    position: relative;
+}
+
+#menu-slider {
+    list-style-type: none;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+}
+
+#menu-slider li {
+    float: left;
+}
+
+.menu-slider-link {
+    display: inline-block;
+    width: 150px;
+    background: #1b1b1b;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin: 10px 0px 10px 10px;
+    height: 40px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.menu-slider-link:hover {
+    background: gray;
+
+}
+
+#menu-slider-prev,
+#menu-slider-next {
+    position: absolute;
+    background: #1b1b1b;
+    color: #fff;
+    padding: 10px;
+    top: 10px;
+    border-radius: 5px;
+    display: none;
+    cursor: pointer;
+}
+
+#menu-slider-prev {
+    left: -20px;
+}
+
+#menu-slider-next {
+    right: -20px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .caja1 {
+        display: none;
+    }
+
+    .caja4 {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    .caja2 {
+        display: none;
+    }
+
+    .caja5 {
+        display: none;
+    }
+
+    .tituloCarta2 {
+        display: none;
+    }
+
+}
