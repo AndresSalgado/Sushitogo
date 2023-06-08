@@ -52,7 +52,8 @@
                         <button class="ui blue submit button">
                             Acceder
                         </button>
-
+                    </div>
+                    <div class="ui message">
                         <div class="ui list">
                             <div class="item">
                                 ¿Has olvidado tu contraseña?
@@ -61,7 +62,7 @@
                                 </a>
                             </div>
                             <div class="item">
-                                ¿Estas registrado?
+                                ¿Estás registrado?
                                 <a href="{{ route('register.index') }}">
                                     Registrarme
                                 </a>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\pedido;
 use App\Notifications\PedidoCanceladoNotification;
+use App\Notifications\PedidoTerminadoNotification;
+use Illuminate\Support\Facades\Session;
 
 class PedidoController extends Controller
 {
@@ -82,7 +84,6 @@ class PedidoController extends Controller
         return redirect('pedido/index')->with('Eliminado', 'El pedido se canceló, se envió un mensaje al correo del cliente y fue eliminado con éxito!!');
     }
 
-
     public function update(Request $request)
     {
         $pedido = pedido::findOrFail($request->id);
@@ -101,6 +102,13 @@ class PedidoController extends Controller
         }
 
         $pedido->save();
+
+        if ($estado_proceso == 1) {
+            $usuario = $pedido->usuario;
+            $usuario->notify(new PedidoTerminadoNotification($pedido));
+
+            Session::flash('pedido_terminado', 'El pedido fue terminado, se ha enviado un mensaje al correo del cliente.');
+        }
 
         return redirect()->route('pedido.index');
     }

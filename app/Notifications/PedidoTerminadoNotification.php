@@ -6,19 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\pedido;
 
-class PedidoCanceladoNotification extends Notification
+class PedidoTerminadoNotification extends Notification
 {
     use Queueable;
+
+    protected $pedido;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(pedido $pedido)
     {
-        //
+        $this->pedido = $pedido;
     }
 
     /**
@@ -41,11 +44,12 @@ class PedidoCanceladoNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Notificación de Pedido Cancelado')
+            ->subject('Pedido terminado')
             ->greeting('Estimado cliente')
-            ->line('Lamentamos informarle que su pedido ha sido cancelado por razones de la empresa.')
-            ->line('Si tiene alguna pregunta o inquietud, no dude en ponerse en contacto con nosotros.')
-            ->line('Gracias por su comprensión.')
+            ->line('¡Su pedido ha sido terminado!')
+            ->line('El pedido con el Código-' . $this->pedido->codigo . ' ha sido terminado.')
+            ->action('Ver detalles del pedido', route('Factura.detalle', ['id' => $this->pedido->id]))
+            ->line('Gracias por utilizar nuestro servicio.')
             ->salutation('Atentamente,')
             ->salutation('Sushi To Go');
     }
