@@ -9,7 +9,7 @@
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">
             <h1 class="titulo">Crear Municipio</h1>
 
-            <form class="ui form" action="{{ route('InsertarMunicipio') }}" method="post">
+            <form class="ui form" action="{{ route('InsertarMunicipio') }}" method="post" id="municipioForm">
                 @csrf
 
                 <div class="two fields">
@@ -18,8 +18,7 @@
                             <label for="">Nombre Municipio: </label>
                         </div>
 
-                        <input type="text" name="NombreMunicipio" id="NombreMunicipio" pattern="^(?!\s).*$"
-                            title="No se permiten espacios en blanco" value="{{ old('NombreMunicipio') }}">
+                        <input type="text" name="NombreMunicipio" id="NombreMunicipio" value="{{ old('NombreMunicipio') }}">
                         @error('NombreMunicipio')
                             <div class="field">
                                 <div class="ui mini negative message">
@@ -28,6 +27,13 @@
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="nombreError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">

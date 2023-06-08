@@ -257,6 +257,7 @@
 
     <script src="{{ asset('Js/Aplication.js') }}"></script>
     <script src="{{ asset('Js/Minimenu.js') }}"></script>
+    <script src="{{ asset('Js/Validaciones.js') }}"></script>
 
     {{-- Script para aumentar automaticamente la cantidad de los productos --}}
     <script>

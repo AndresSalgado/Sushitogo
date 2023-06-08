@@ -10,7 +10,8 @@
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">
             <h1 class="titulo">Crear Restaurante</h1>
 
-            <form class="ui form" action="{{ route('InsertarRestaurante') }}" enctype="multipart/form-data" method="post">
+            <form class="ui form" action="{{ route('InsertarRestaurante') }}" enctype="multipart/form-data" method="post"
+                id="restauranteForm">
                 @csrf
 
                 <div class="two fields">
@@ -19,8 +20,7 @@
                             <label for="">Nombre Restaurante: </label>
                         </div>
 
-                        <input type="text" name="nombre" id="nombre" pattern="^(?!\s).*$"
-                            title="No se permiten espacios en blanco" value="{{ old('nombre') }}">
+                        <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}">
                         @error('nombre')
                             <div class="field">
                                 <div class="ui mini negative message">
@@ -29,11 +29,18 @@
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="nombreError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">
                         <div class="ui large black label">
-                            <label for="">Telefono Restaurante: </label>
+                            <label for="">Teléfono Restaurante: </label>
                         </div>
 
                         <input type="number" name="telefono" id="telefono" value="{{ old('telefono') }}">
@@ -73,19 +80,25 @@
 
                     <div class="field">
                         <div class="ui large black label">
-                            <label for="">Direccion Restaurante: </label>
+                            <label for="">Dirección Restaurante: </label>
                         </div>
 
-                        <input type="text" name="direccion" id="direccion" pattern="^(?!\s).*$"
-                            title="No se permiten espacios en blanco" value="{{ old('direccion') }}">
+                        <input type="text" name="direccion" id="direccion" value="{{ old('direccion') }}">
                         @error('direccion')
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese una direccion</p>
+                                    <p>* Por favor ingrese una dirección</p>
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="direccionError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo dirección sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -129,18 +142,5 @@
 
         </div>
     </div>
-
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(document).ready(function(e) {
-            $('#imagen').change(function() {
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    $('#imagenSeleccionada').attr('src', e.tarjet.result);
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-        });
-    </script> --}}
 
 @endsection

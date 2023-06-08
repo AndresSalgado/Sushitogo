@@ -37,6 +37,7 @@ class UsuarioController extends Controller
         return view('usuario.crear', compact('municipio', 'role'));
     }
 
+    //Aqui el admin registra un usuario
     public function store(Request $usuario)
     {
 
@@ -45,12 +46,16 @@ class UsuarioController extends Controller
             'telefono' => 'required|between:7,10',
             'direccion' => 'required',
             'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9._%+-]+@(gmail|GMAIL|hotmail|HOTMAIL)\.(com|COM|co|CO)$/i'],
-            'password' => 'required|between:8,16',
+            'password' => 'required|min:8|max:16|confirmed',
             'municipio_id' => 'required',
             'role_id' => 'required',
         ], [
             'email.required' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
-            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co'
+            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
+            'password.required' => 'Por favor llene el campo contraseña',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'password.max' => 'La contraseña no puede exceder los 16 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
 
         if (User::where('email', request('email'))->exists()) {
@@ -104,10 +109,13 @@ class UsuarioController extends Controller
             'direccion' => 'required',
             'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9._%+-]+@(gmail|GMAIL|hotmail|HOTMAIL)\.(com|COM|co|CO)$/i'],
             'municipio_id' => 'required',
-            'password' => 'nullable|between:8,16'
+            'password' => 'nullable|min:8|max:16|confirmed'
         ], [
             'email.required' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
-            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co'
+            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'password.max' => 'La contraseña no puede exceder los 16 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
 
         $usuario = [
@@ -164,7 +172,7 @@ class UsuarioController extends Controller
         return redirect()->route('cart.checkout')->with('success', 'Perfil actualizado con éxito.');
     }
 
-    //Aqui lo actualiza el admin
+    //Aqui el admin actualiza los datos del usuario
     public function editBd(Request $user)
     {
 
@@ -175,10 +183,13 @@ class UsuarioController extends Controller
             'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9._%+-]+@(gmail|GMAIL|hotmail|HOTMAIL)\.(com|COM|co|CO)$/i'],
             'municipio_id' => 'required',
             'role_id' => 'required',
-            'password' => 'nullable|between:8,16'
+            'password' => 'nullable|min:8|max:16|confirmed'
         ], [
             'email.required' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
-            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co'
+            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'password.max' => 'La contraseña no puede exceder los 16 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
 
         $instanciarusuario = user::FindOrFail($user->id);

@@ -19,7 +19,12 @@ class ForgotPasswordController extends Controller
 
     public function sendResetLinkEmail(Request $request)
     {
-        $this->validateEmail($request);
+        // $this->validateEmail($request);
+        $this->validate($request, [
+            'email' => 'required|email',
+        ], [
+            'email.required' => 'El campo correo electrónico es obligatorio.',
+        ]);
 
         $response = $this->broker()->sendResetLink(
             $request->only('email')

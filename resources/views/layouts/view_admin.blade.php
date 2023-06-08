@@ -264,6 +264,7 @@
 
     <script src="{{ asset('Js/Aplication.js') }}"></script>
     <script src="{{ asset('Js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('Js/Validaciones.js') }}"></script>
 
     <script>
         $('.ui.checkbox')

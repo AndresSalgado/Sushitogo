@@ -26,18 +26,20 @@ class ResetPasswordController extends Controller
             'email' => 'required|email',
             'password' => 'required|confirmed|between:8,16',
         ], [
-            'password.confirmed' => 'Las contraseñas no coinciden.',
-            'password.between' => 'La contraseña debe tener entre 8 y 16 caracteres.',
+            'email.required' => 'El campo email es obligatorio',
+            'password.required' => 'El campo contraseña es obligatorio',
+            'password.confirmed' => 'Las contraseñas no coinciden',
+            'password.between' => 'La contraseña debe tener entre 8 y 16 caracteres',
         ]);
 
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            return back()->withErrors(['email' => 'El correo electrónico no se encuentra.']);
+            return back()->withErrors(['email' => 'El correo electrónico no se encuentra']);
         }
 
         if (Hash::check($request->password, $user->password)) {
-            return back()->withErrors(['password' => 'Por favor, elige una contraseña diferente.']);
+            return back()->withErrors(['password' => 'Por favor, elige una contraseña diferente']);
         }
 
         if ($request->filled('password')) {
@@ -46,6 +48,6 @@ class ResetPasswordController extends Controller
 
         $user->save();
 
-        return redirect()->route('login.index')->with('status', 'Contraseña fue actualizada correctamente.');
+        return redirect()->route('login.index')->with('status', 'Contraseña fue actualizada correctamente');
     }
 }

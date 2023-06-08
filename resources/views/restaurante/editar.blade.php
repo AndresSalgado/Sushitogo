@@ -8,7 +8,7 @@
 
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">
             <h1 class="titulo">Actualizar Restaurante</h1>
-            <form class="ui form" action="{{ route('updateBdRestaurante') }}" enctype="multipart/form-data" method="post">
+            <form class="ui form" action="{{ route('updateBdRestaurante') }}" enctype="multipart/form-data" method="post" id="restauranteForm">
                 @csrf
 
                 <div class="two fields">
@@ -27,6 +27,13 @@
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="nombreError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">
@@ -34,8 +41,7 @@
                             <label for="">Telefono Restaurante: </label>
                         </div>
 
-                        <input type="number" name="telefono" id="telefono" value="{{ $update->telefono }}"
-                            pattern="^\d{10}$" title="Por favor, ingrese un número de teléfono de 10 dígitos.">
+                        <input type="number" name="telefono" id="telefono" value="{{ $update->telefono }}">
                         @if ($errors->has('telefono'))
                             <div class="field">
                                 <div class="ui mini negative message">
@@ -72,7 +78,7 @@
 
                     <div class="field">
                         <div class="ui large black label">
-                            <label for="">Direccion Restaurante: </label>
+                            <label for="">Dirección Restaurante: </label>
                         </div>
 
                         <input type="text" name="direccion" id="direccion" value="{{ $update->direccion }}">
@@ -80,10 +86,17 @@
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese una direccion</p>
+                                    <p>* Por favor ingrese una dirección</p>
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="direccionError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo dirección sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -108,7 +121,6 @@
                         Actualizar
                     </button>
                 </div>
-
             </form>
 
             <div class="botones">
@@ -121,8 +133,6 @@
             </div>
 
         </div>
-
-
     </div>
 
 @endsection

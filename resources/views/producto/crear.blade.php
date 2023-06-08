@@ -10,7 +10,8 @@
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">
             <h1 class="titulo">Crear Producto</h1>
 
-            <form class="ui form" action="{{ route('InsertarProducto') }}" enctype="multipart/form-data" method="post">
+            <form class="ui form" action="{{ route('InsertarProducto') }}" enctype="multipart/form-data" method="post"
+                id="productoForm">
                 @csrf
 
                 <div class="two fields">
@@ -19,8 +20,7 @@
                             <label for="">Nombre Producto: </label>
                         </div>
 
-                        <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}" pattern="^(?!\s).*$"
-                            title="No se permiten espacios en blanco">
+                        <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}">
                         @error('nombre')
                             <div class="field">
                                 <div class="ui mini negative message">
@@ -29,6 +29,13 @@
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="nombreError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">

@@ -28,8 +28,7 @@
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
                                 <input id="email" type="email" class="@error('email') error @enderror" name="email"
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus
-                                    placeholder="Correo Electrónico">
+                                    value="{{ old('email') }}" autocomplete="email" placeholder="Correo Electrónico">
                             </div>
                             @if (session('status'))
                                 <div class="ui mini positive message">

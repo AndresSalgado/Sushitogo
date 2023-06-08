@@ -26,11 +26,15 @@ class RegisterController extends Controller
             'telefono' => 'required|between:7,10',
             'direccion' => 'required',
             'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9._%+-]+@(gmail|GMAIL|hotmail|HOTMAIL)\.(com|COM|co|CO)$/i'],
-            'password' => 'required|between:8,16',
+            'password' => 'required|min:8|max:16|confirmed',
             'municipio_id' => 'required',
         ], [
             'email.required' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
-            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co'
+            'email.regex' => 'El correo electrónico debe ser de Gmail o Hotmail y tener la extensión .com o .co',
+            'password.required' => 'Por favor llene el campo contraseña',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'password.max' => 'La contraseña no puede exceder los 16 caracteres',
+            'password.confirmed' => 'Las contraseñas no coinciden'
         ]);
 
         if (User::where('email', request('email'))->exists()) {

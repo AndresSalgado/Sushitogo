@@ -22,7 +22,7 @@
             </div>
         @enderror
 
-        <form class="ui form" method="POST" action="{{ route('password.update') }}">
+        <form class="ui form" method="POST" action="{{ route('password.update') }}" id="resetForm">
             @csrf
             <div class="ui middle aligned center aligned grid">
                 <div class="column" style="max-width: 450px;">
@@ -37,21 +37,26 @@
 
                         <div class="field">
                             <input id="email" type="email" class="@error('email') error @enderror" name="email"
-                                value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus
-                                placeholder="Correo Electronico">
+                                value="{{ $email ?? old('email') }}" autocomplete="email" placeholder="Correo Electronico">
                         </div>
 
                         <div class="field">
                             <div class="ui icon input">
                                 <input id="password" type="password" class="@error('password') error @enderror"
-                                    name="password" required autocomplete="new-password" placeholder="Contraseña">
+                                    name="password" autocomplete="new-password" placeholder="Contraseña">
                                 <i class="inverted circular eye link icon" onclick="MostrarPassword()"></i>
+                            </div>
+                            <div class="field">
+                                <div id="passwordError" class="ui mini negative message hidden">
+                                    <i class="close icon"></i>
+                                    <p>Por favor llene el campo contraseña sin espacios en blanco</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="ui icon input">
-                                <input id="password-confirm" type="password" name="password_confirmation" required
+                                <input id="password-confirm" type="password" name="password_confirmation"
                                     autocomplete="new-password" placeholder="Confirmar Contraseña">
                                 <i class="inverted circular eye link icon" onclick="MostrarPasswordConfirm()"></i>
                             </div>

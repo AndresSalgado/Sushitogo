@@ -3,8 +3,9 @@
 @section('title', 'Register')
 
 @section('content')
+
     <div class="ui container">
-        <form action="" method="POST" class="ui large form">
+        <form action="" method="POST" class="ui large form" id="myForm">
             @csrf
 
             <div class="ui middle aligned center aligned grid">
@@ -19,7 +20,6 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <input type="text" placeholder="Nombre" id="name" name="name"
-                                    pattern="^(?!\s).*$" title="No se permiten espacios en blanco"
                                     value="{{ old('name') }}">
                                 <i class="user icon"></i>
                             </div>
@@ -33,6 +33,13 @@
                                     </div>
                                 </div>
                             @enderror
+
+                            <div class="field">
+                                <div id="nameError" class="ui mini negative message hidden">
+                                    <i class="close icon"></i>
+                                    <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="field">
@@ -75,7 +82,6 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <input type="text" placeholder="Dirección" id="direccion" name="direccion"
-                                    pattern="^(?!\s).*$" title="No se permiten espacios en blanco"
                                     value="{{ old('direccion') }}">
                                 <i class="map icon"></i>
                             </div>
@@ -84,20 +90,26 @@
                                 <div class="field">
                                     <div class="ui mini negative message">
                                         <i class="close icon"></i>
-                                        <p>Por favor llene el campo direccion
+                                        <p>Por favor llene el campo dirección
                                         </p>
                                     </div>
                                 </div>
                             @enderror
+
+                            <div class="field">
+                                <div id="direccionError" class="ui mini negative message hidden">
+                                    <i class="close icon"></i>
+                                    <p>Por favor llene el campo dirección sin espacios en blanco</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="field">
                             <div class="ui left icon input">
-                                <input type="email" placeholder="Correo Electronico" id="email" name="email"
+                                <input type="email" placeholder="Correo Electrónico" id="email" name="email"
                                     value="{{ old('email') }}">
                                 <i class="envelope icon"></i>
                             </div>
-
 
                             @if ($errors->has('email'))
                                 @if ($errors->first('email') == 'Este correo electrónico ya está en uso')
@@ -124,29 +136,43 @@
                             <div class="ui icon input">
                                 <!-- <i class="lock icon"></i> -->
                                 <input type="password" placeholder="Contraseña" id="password" name="password"
-                                    pattern="^(?!\s).*$" title="No se permiten espacios en blanco"
                                     value="{{ old('password') }}">
                                 <i class="inverted circular eye link icon" onclick="MostrarPassword()"></i>
                             </div>
 
-                            @if ($errors->has('password'))
+                            @error('password')
                                 <div class="field">
                                     <div class="ui mini negative message">
                                         <i class="close icon"></i>
-                                        <p>La contraseña debe tener entre 8 y 16 caracteres.</p>
+                                        <p>{{ $message }}</p>
                                     </div>
                                 </div>
-                            @endif
+                            @enderror
+
+                            <div class="field">
+                                <div id="passwordError" class="ui mini negative message hidden">
+                                    <i class="close icon"></i>
+                                    <p>Por favor llene el campo contraseña sin espacios en blanco</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" placeholder="Confirmar Contraseña" id="password-confirm" name="password_confirmation">
+                                <i class="inverted circular eye link icon" onclick="MostrarPasswordConfirm()"></i>
+                            </div>
                         </div>
 
                         <button class="ui blue submit button">Registrarme</button>
                     </div>
 
                     <div class="ui message">
-                        ¿Ya estas registrado? <a href="{{ route('login.index') }}">Iniciar Sesion</a>
+                        ¿Ya estás registrado? <a href="{{ route('login.index') }}">Iniciar Sesión</a>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
 @endsection

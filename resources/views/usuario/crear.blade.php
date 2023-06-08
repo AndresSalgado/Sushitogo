@@ -9,7 +9,7 @@
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">
             <h1 class="titulo">Crear Usuario</h1>
 
-            <form class="ui form" action="{{ route('InsertarUsuario') }}" method="post">
+            <form class="ui form" action="{{ route('InsertarUsuario') }}" method="post" id="myForm">
                 @csrf
 
                 <div class="two fields">
@@ -18,24 +18,30 @@
                             <label for="">Nombre Usuario: </label>
                         </div>
 
-                        <input type="text" name="name" id="name" pattern="^(?!\s).*$"
-                            title="No se permiten espacios en blanco" value="{{ old('name') }}">
+                        <input type="text" name="name" id="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese un nombre</p>
+                                    <p>Por favor ingrese un nombre</p>
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="nameError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">
                         <div class="ui large black label">
-                            <label for="">Numero Telefono: </label>
+                            <label for="">Número Teléfono: </label>
                         </div>
 
-                        <input type="tel" name="telefono" id="telefono" value="{{ old('telefono') }}">
+                        <input type="number" name="telefono" id="telefono" value="{{ old('telefono') }}">
                         @if ($errors->has('telefono'))
                             <div class="field">
                                 <div class="ui mini negative message">
@@ -47,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="three fields">
+                <div class="two fields">
                     <div class="field">
                         <div class="ui large black label">
                             <label for="">Municipio Usuario: </label>
@@ -64,7 +70,7 @@
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor seleccione un municipio</p>
+                                    <p>Por favor seleccione un municipio</p>
                                 </div>
                             </div>
                         @enderror
@@ -86,24 +92,7 @@
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor seleccione un rol</p>
-                                </div>
-                            </div>
-                        @enderror
-                    </div>
-
-                    <div class="field">
-                        <div class="ui large black label">
-                            <label for="">Direccion: </label>
-                        </div>
-
-                        <input type="text" name="direccion" id="direccion" pattern="^(?!\s).*$"
-                            title="No se permiten espacios en blanco" value="{{ old('direccion') }}">
-                        @error('direccion')
-                            <div class="field">
-                                <div class="ui mini negative message">
-                                    <i class="close icon"></i>
-                                    <p>* Por favor ingrese una direccion</p>
+                                    <p>Por favor seleccione un rol</p>
                                 </div>
                             </div>
                         @enderror
@@ -111,6 +100,29 @@
                 </div>
 
                 <div class="two fields">
+                    <div class="field">
+                        <div class="ui large black label">
+                            <label for="">Dirección: </label>
+                        </div>
+
+                        <input type="text" name="direccion" id="direccion" value="{{ old('direccion') }}">
+                        @error('direccion')
+                            <div class="field">
+                                <div class="ui mini negative message">
+                                    <i class="close icon"></i>
+                                    <p>Por favor ingrese una direccion</p>
+                                </div>
+                            </div>
+                        @enderror
+
+                        <div class="field">
+                            <div id="direccionError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo dirección sin espacios en blanco</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="field">
                         <div class="ui large black label">
                             <label for="">Email: </label>
@@ -138,9 +150,10 @@
                                 @endif
                             @endif
                         @endif
-
                     </div>
+                </div>
 
+                <div class="two fields">
                     <div class="field">
                         <div class="ui large black label">
                             <label for="">Contraseña: </label>
@@ -148,18 +161,35 @@
 
                         <div class="ui icon input">
                             <input type="password" placeholder="Contraseña" id="password" name="password"
-                                pattern="^(?!\s).*$" title="No se permiten espacios en blanco"
                                 value="{{ old('password') }}">
                             <i class="inverted circular eye link icon" onclick="MostrarPassword()"></i>
                         </div>
-                        @if ($errors->has('password'))
+                        @error('password')
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>La contraseña debe tener entre 8 y 16 caracteres.</p>
+                                    <p>{{ $message }}</p>
                                 </div>
                             </div>
-                        @endif
+                        @enderror
+
+                        <div class="field">
+                            <div id="passwordError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo contraseña sin espacios en blanco</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="ui large black label">
+                            <label for="">Confirmar Contraseña: </label>
+                        </div>
+
+                        <div class="ui icon input">
+                            <input type="password" id="password-confirm" name="password_confirmation">
+                            <i class="inverted circular eye link icon" onclick="MostrarPasswordConfirm()"></i>
+                        </div>
                     </div>
                 </div>
 

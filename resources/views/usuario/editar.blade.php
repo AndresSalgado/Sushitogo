@@ -7,7 +7,7 @@
     <div class="ui container">
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">
             <h1 class="titulo">Actualizar Usuario</h1>
-            <form class="ui form" action="{{ route('updateBdUsuario') }}" method="post">
+            <form class="ui form" action="{{ route('updateBdUsuario') }}" method="post" id="myForm">
                 @csrf
 
                 <div class="two fields">
@@ -26,14 +26,21 @@
                                 </div>
                             </div>
                         @enderror
+
+                        <div class="field">
+                            <div id="nameError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">
                         <div class="ui large black label">
-                            <label for="">Numero Telefono: </label>
+                            <label for="">Número Teléfono: </label>
                         </div>
 
-                        <input type="text" name="telefono" id="telefono" value="{{ $update->telefono }}">
+                        <input type="number" name="telefono" id="telefono" value="{{ $update->telefono }}">
                         @if ($errors->has('telefono'))
                             <div class="field">
                                 <div class="ui mini negative message">
@@ -45,7 +52,7 @@
                     </div>
                 </div>
 
-                <div class="three fields">
+                <div class="two fields">
                     <div class="field">
                         <div class="ui large black label">
                             <label for="">Municipio Usuario: </label>
@@ -89,10 +96,12 @@
                             </div>
                         @enderror
                     </div>
+                </div>
 
+                <div class="two fields">
                     <div class="field">
                         <div class="ui large black label">
-                            <label for="">Direccion: </label>
+                            <label for="">Dirección: </label>
                         </div>
 
                         <input type="text" name="direccion" id="direccion" value="{{ $update->direccion }}">
@@ -100,14 +109,19 @@
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese una direccion</p>
+                                    <p>* Por favor ingrese una dirección</p>
                                 </div>
                             </div>
                         @enderror
-                    </div>
-                </div>
 
-                <div class="two fields">
+                        <div class="field">
+                            <div id="direccionError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo dirección sin espacios en blanco</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="field">
                         <div class="ui large black label">
                             <label for="">Email: </label>
@@ -135,25 +149,44 @@
                             @endif
                         @endif
                     </div>
+                </div>
 
+                <div class="two fields">
                     <div class="field">
                         <div class="ui large black label">
                             <label for="">Contraseña: </label>
                         </div>
 
                         <div class="ui icon input">
-                            <input type="password" name="password" id="password" pattern="^(?!\s).*$"
-                                title="No se permiten espacios en blanco">
+                            <input type="password" name="password" id="password">
                             <i class="inverted circular eye link icon" onclick="MostrarPassword()"></i>
                         </div>
-                        @if ($errors->has('password'))
+                        @error('password')
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>La contraseña debe tener entre 8 y 16 caracteres.</p>
+                                    <p>{{ $message }}</p>
                                 </div>
                             </div>
-                        @endif
+                        @enderror
+
+                        <div class="field">
+                            <div id="passwordError" class="ui mini negative message hidden">
+                                <i class="close icon"></i>
+                                <p>Por favor llene el campo contraseña sin espacios en blanco</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="ui large black label">
+                            <label for="">Confirmar Contraseña: </label>
+                        </div>
+
+                        <div class="ui icon input">
+                            <input type="password" id="password-confirm" name="password_confirmation">
+                            <i class="inverted circular eye link icon" onclick="MostrarPasswordConfirm()"></i>
+                        </div>
                     </div>
                 </div>
 
