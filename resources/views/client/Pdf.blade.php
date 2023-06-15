@@ -101,9 +101,9 @@
                         @foreach ($Pedido->detalle as $d)
                             <tr>
                                 <td>{{ $d->cantidad }}</td>
-                                <td>{{ $d->producto->nombre }}</td>
-                                <td>${{ $d->producto->precio }}</td>
-                                <td>${{ $d->producto->precio * $d->cantidad }}</td>
+                                <td>{{ $d->nombre_producto }}</td>
+                                <td>${{ $d->precio_producto }}</td>
+                                <td>${{ $d->precio_producto * $d->cantidad }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -116,7 +116,7 @@
                         <tr>
                             <th colspan="2"></th>
                             <th>Precio Envío:</th>
-                            <th>${{ $Pedido->usuario->municipio->PrecioEnvio }}</th>
+                            <th>${{ $Pedido->costoEnvio }}</th>
                         </tr>
                         <tr>
                             <th colspan="2"></th>

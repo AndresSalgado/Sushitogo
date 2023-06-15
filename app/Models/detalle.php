@@ -9,7 +9,7 @@ class detalle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cantidad', 'producto_id', 'pedido_id'];
+    protected $fillable = ['cantidad', 'nombre_producto', 'precio_producto', 'producto_id', 'pedido_id'];
 
     public function pedido()
     {

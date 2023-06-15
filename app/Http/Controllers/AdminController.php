@@ -14,10 +14,18 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function ventas()
+    public function ventas(Request $request)
     {
-        $inicioMes = Carbon::now()->startOfMonth();
-        $finMes = Carbon::now()->endOfMonth();
+        $mes = $request->input('mes');
+        $anio = $request->input('anio');
+
+        if (empty($mes) || empty($anio)) {
+            // Manejar el error de valores faltantes
+            // por ejemplo, redirigir o mostrar un mensaje de error
+        }
+
+        $inicioMes = Carbon::create($anio, $mes)->startOfMonth();
+        $finMes = Carbon::create($anio, $mes)->endOfMonth();
 
         $pedidos = Pedido::where('estado_2', '1')
             ->whereBetween('updated_at', [$inicioMes, $finMes])

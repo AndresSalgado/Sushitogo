@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('detalles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad')->default(0);
+            $table->string('nombre_producto');
+            $table->double('precio_producto',12,2);
             $table->unsignedBigInteger('producto_id');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
             $table->unsignedBigInteger('pedido_id');

@@ -82,6 +82,9 @@ Route::get('/ventas', [AdminController::class, 'ventas'])
     ->middleware('auth.admin')
     ->name('view.venta');
 
+Route::get('/estadisticas/ventas', [AdminController::class, 'ventas'])
+    ->name('estadisticas.ventas');
+
 Route::post('estadisticas/reiniciar', [PedidoController::class, 'reiniciarEstadisticas'])
     ->name('estadisticas.reiniciar');
 #endregion

@@ -100,6 +100,8 @@ class CartController extends Controller
             foreach (Cart::getContent() as $r) :
                 $detalle = new detalle();
                 $detalle->cantidad = $r->quantity;
+                $detalle->nombre_producto = $r->name;
+                $detalle->precio_producto = $r->price;
                 $detalle->producto_id = $r->id;
                 $detalle->pedido_id = $pedido->id;
 

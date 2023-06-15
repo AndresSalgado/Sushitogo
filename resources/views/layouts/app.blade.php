@@ -65,7 +65,7 @@
                                     </a>
                                     <a class="item" href="{{ route('login.destroy') }}">
                                         <i class="arrow alternate circle left icon"></i>
-                                        CERRAR SESION
+                                        CERRAR SESIÓN
                                     </a>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                     PROCESO PEDIDO
                 </a>
                 <a class="item" href="{{ route('login.destroy') }}">
-                    CERRAR SESION
+                    CERRAR SESIÓN
                 </a>
             @else
                 <a class="item right" href="{{ route('login.destroy') }}">

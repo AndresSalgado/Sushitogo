@@ -40,13 +40,13 @@
                                                 {{ $d->cantidad }}
                                             </td>
                                             <td>
-                                                {{ $d->producto->nombre }}
+                                                {{ $d->nombre_producto }}
                                             </td>
                                             <td>
-                                                ${{ $d->producto->precio }}
+                                                ${{ $d->precio_producto }}
                                             </td>
                                             <td>
-                                                ${{ $d->producto->precio * $d->cantidad }}
+                                                ${{ $d->precio_producto * $d->cantidad }}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -60,7 +60,7 @@
                                     <tr>
                                         <th colspan="2"></th>
                                         <th>Precio Envío:</th>
-                                        <th>${{ $pedido->usuario->municipio->PrecioEnvio }}</th>
+                                        <th>${{ $pedido->costoEnvio }}</th>
                                     </tr>
                                     <tr>
                                         <th colspan="2"></th>

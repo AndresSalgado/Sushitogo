@@ -27,7 +27,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="email" name="email" id="email" placeholder="Correo Electronico">
+                                <input type="email" name="email" id="email" placeholder="Correo Electrónico">
                             </div>
                         </div>
                         <div class="field">
@@ -55,16 +55,16 @@
                     </div>
                     <div class="ui message">
                         <div class="ui list">
+                        <div class="item">
+                                ¿Estás registrado?
+                                <a href="{{ route('register.index') }}">
+                                    Registrarme
+                                </a>
+                            </div>
                             <div class="item">
                                 ¿Has olvidado tu contraseña?
                                 <a href="{{ route('password.request') }}">
                                     Recuperar contraseña
-                                </a>
-                            </div>
-                            <div class="item">
-                                ¿Estás registrado?
-                                <a href="{{ route('register.index') }}">
-                                    Registrarme
                                 </a>
                             </div>
                         </div>

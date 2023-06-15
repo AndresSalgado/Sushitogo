@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="ui container">
-        <h1 id="titulo-estadisticas">Estadísticas de ventas por día durante el mes de {{ ucfirst(Carbon\Carbon::now()->locale('es')->monthName) }}</h1>
+        <h1 id="titulo-estadisticas">Estadísticas de ventas por día durante el mes</h1>
 
         @if (session('success'))
             <div class="ui success message">
@@ -30,6 +30,49 @@
                     <div class="ui header">Total de pedidos en el mes:</div>
                     {{ $totalPedidosMes }}
                 </div>
+            </div>
+            <div class="item">
+                <form class="ui form" action="{{ route('estadisticas.ventas') }}" method="GET">
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Mes:</label>
+                            <select class="ui fluid dropdown" name="mes">
+                                <option value="1" {{ \Carbon\Carbon::now()->month == 1 ? 'selected' : '' }}>Enero
+                                </option>
+                                <option value="2" {{ \Carbon\Carbon::now()->month == 2 ? 'selected' : '' }}>Febrero
+                                </option>
+                                <option value="3" {{ \Carbon\Carbon::now()->month == 3 ? 'selected' : '' }}>Marzo
+                                </option>
+                                <option value="4" {{ \Carbon\Carbon::now()->month == 4 ? 'selected' : '' }}>Abril
+                                </option>
+                                <option value="5" {{ \Carbon\Carbon::now()->month == 5 ? 'selected' : '' }}>Mayo
+                                </option>
+                                <option value="6" {{ \Carbon\Carbon::now()->month == 6 ? 'selected' : '' }}>Junio
+                                </option>
+                                <option value="7" {{ \Carbon\Carbon::now()->month == 7 ? 'selected' : '' }}>Julio
+                                </option>
+                                <option value="8" {{ \Carbon\Carbon::now()->month == 8 ? 'selected' : '' }}>Agosto
+                                </option>
+                                <option value="9" {{ \Carbon\Carbon::now()->month == 9 ? 'selected' : '' }}>Septiembre
+                                </option>
+                                <option value="10" {{ \Carbon\Carbon::now()->month == 10 ? 'selected' : '' }}>Octubre
+                                </option>
+                                <option value="11" {{ \Carbon\Carbon::now()->month == 11 ? 'selected' : '' }}>Noviembre
+                                </option>
+                                <option value="12" {{ \Carbon\Carbon::now()->month == 12 ? 'selected' : '' }}>Diciembre
+                                </option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Año:</label>
+                            <input type="number" name="anio" value="{{ \Carbon\Carbon::now()->format('Y') }}">
+                        </div>
+                        <div class="field">
+                            <label style="color: rgba(255, 255, 255, 0)">boton</label>
+                            <button type="submit" class="ui blue button">Filtrar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -65,7 +108,8 @@
                         borderColor: 'rgba(0, 0, 0, 1)',
                         borderWidth: 1
                     });
-                    document.getElementById('titulo-estadisticas').textContent = 'Estadísticas de ventas por día durante el mes de {{ ucfirst(Carbon\Carbon::now()->locale("es")->monthName) }}';
+                    document.getElementById('titulo-estadisticas').textContent =
+                        'Estadísticas de ventas por día durante el mes';
                 } else if (chartType === 'pedidos') {
                     datasets.push({
                         label: 'Cantidad de pedidos realizados en el día',
@@ -74,7 +118,8 @@
                         borderColor: 'rgba(0, 0, 0, 1)',
                         borderWidth: 1
                     });
-                    document.getElementById('titulo-estadisticas').textContent = 'Estadísticas de pedidos por día durante el mes de {{ ucfirst(Carbon\Carbon::now()->locale("es")->monthName) }}';
+                    document.getElementById('titulo-estadisticas').textContent =
+                        'Estadísticas de pedidos por día durante el mes';
                 }
 
                 ventasChart = new Chart(ctx, {
