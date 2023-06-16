@@ -9,9 +9,9 @@
         <div class="ui raised very padded text container segment">
             <h2 class="ui header">¿QUIENES SOMOS?</h2>
             <p>Somos una cadena de restauerantes, que comenzo hace 18 años con un enfoque de comida saludable llevando
-                platos de la cultura Japonesa a los hogares</p>
+                platos de la cultura Japonesa a los hogares.</p>
             <p>Actual Mente contamos con 4 puntos de venta con servicio a domicilio y servicio de mesa, en Sushi To Go
-                tambien brindamos eventos para reuniones, festejos</p>
+                tambien brindamos eventos para reuniones, festejos.</p>
 
         </div>
     </div>
