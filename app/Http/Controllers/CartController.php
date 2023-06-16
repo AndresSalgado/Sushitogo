@@ -17,7 +17,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
 
-        $producto = Producto::find($request->producto_id);
+        $producto = producto::find($request->producto_id);
 
         $cantidadActual = Cart::getContent()->where('id', $producto->id)->sum('quantity');
 
@@ -86,6 +86,8 @@ class CartController extends Controller
         if (Cart::getContent()->count() > 0) :
             //procesamiento
             $precioEnvio = Auth::user()->municipio->PrecioEnvio;
+            $municipio = Auth::user()->municipio->NombreMunicipio;
+            $direccion = Auth::user()->direccion;
 
             $pedido = new pedido();
             $pedido->codigo = 'COD: ' . uniqid();
@@ -100,6 +102,8 @@ class CartController extends Controller
             foreach (Cart::getContent() as $r) :
                 $detalle = new detalle();
                 $detalle->cantidad = $r->quantity;
+                $detalle->nombre_municipio = $municipio;
+                $detalle->direccion_cliente = $direccion;
                 $detalle->nombre_producto = $r->name;
                 $detalle->precio_producto = $r->price;
                 $detalle->producto_id = $r->id;

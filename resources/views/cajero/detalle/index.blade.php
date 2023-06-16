@@ -39,13 +39,13 @@
                     <div class="item">
                         <i class="map alternate icon"></i>
                         <div class="content">
-                            Municipio: {{ $detalle[0]->pedido->usuario->municipio->NombreMunicipio }}
+                            Municipio: {{ $detalle[0]->nombre_municipio }}
                         </div>
                     </div>
                     <div class="item">
                         <i class="map marker alternate icon"></i>
                         <div class="content">
-                            Direccion: {{ $detalle[0]->pedido->usuario->direccion }}
+                            Direccion: {{ $detalle[0]->direccion_cliente }}
                         </div>
                     </div>
                 </div>
@@ -70,13 +70,13 @@
                                     {{ $m->cantidad }}
                                 </td>
                                 <td>
-                                    {{ $m->producto->nombre }}
+                                    {{ $m->nombre_producto }}
                                 </td>
                                 <td>
-                                    ${{ $m->producto->precio }}
+                                    ${{ $m->precio_producto }}
                                 </td>
                                 <td>
-                                    ${{ $m->producto->precio * $m->cantidad }}
+                                    ${{ $m->precio_producto * $m->cantidad }}
                                 </td>
                             </tr>
                         @endforeach
@@ -90,7 +90,7 @@
                         <tr>
                             <th colspan="2"></th>
                             <th>Precio Envío:</th>
-                            <th>${{ $detalle[0]->pedido->usuario->municipio->PrecioEnvio }}</th>
+                            <th>${{ $detalle[0]->pedido->costoEnvio }}</th>
                         </tr>
                         <tr>
                             <th colspan="2"></th>

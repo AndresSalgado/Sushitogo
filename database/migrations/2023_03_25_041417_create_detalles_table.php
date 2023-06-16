@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('detalles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad')->default(0);
+            $table->string('nombre_municipio');
+            $table->string('direccion_cliente');
             $table->string('nombre_producto');
             $table->double('precio_producto',12,2);
             $table->unsignedBigInteger('producto_id');
