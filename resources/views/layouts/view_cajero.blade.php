@@ -34,7 +34,7 @@
                         <div class="item">
                             @if (auth()->check())
                                 <a class="item right" href="{{ route('login.destroy') }}">
-                                    <button class="ui inverted red button">CERRAR SESION</button>
+                                    <button class="ui inverted red button">CERRAR SESIÓN</button>
                                 </a>
                             @endif
                         </div>

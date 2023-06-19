@@ -75,11 +75,12 @@
                 </form>
             </div>
         </div>
-
-        <div class="ui statistics">
-            <canvas id="ventasChart" width="400" height="200"></canvas>
+        <div style="margin-left: 2%">
+            <div class="ui statistics">
+                <canvas id="ventasChart" width="400" height="200"></canvas>
+            </div>
         </div>
-        <br><br><br><br><br>
+        <br><br>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
