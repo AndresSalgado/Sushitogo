@@ -54,18 +54,8 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="2"></th>
-                                        <th>SubTotal</th>
-                                        <th>${{ $pedido->subtotal }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"></th>
-                                        <th>Precio Envío:</th>
-                                        <th>${{ $pedido->costoEnvio }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"></th>
-                                        <th>Total</th>
-                                        <th>${{ $pedido->total }}</th>
+                                        <th style="font-weight: bold">Total</th>
+                                        <th style="font-weight: bold">${{ $pedido->total }}</th>
                                     </tr>
                                     <tr>
                                         <th colspan="4">
@@ -84,7 +74,7 @@
             @else
                 <div class="ui info message">
                     <div class="header">
-                        No haz Iniciado Sesion
+                        No has iniciado sesión
                     </div>
                     <div class="content">
                         <p>Debe iniciar sesión para ver su historial de pedidos</p>

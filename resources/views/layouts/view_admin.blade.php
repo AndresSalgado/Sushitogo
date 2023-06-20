@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="{{ asset('Css/styleAdmin.css') }}">
     <link rel="stylesheet" href="{{ asset('Css/semantic.css') }}">
     <link rel="shortcut icon" href="{{ asset('Img/logox1.png') }}" type="image/x-icon">
@@ -84,6 +85,9 @@
                     <a href="{{ route('view.venta') }}" class="item" style="color: rgb(255, 255, 255)">
                         Ventas
                     </a>
+                    <a href="{{ route('seguimiento.pedidos') }}" class="item" style="color: rgb(255, 255, 255)">
+                        Seguimientos
+                    </a>
                     <a href="{{ route('login.destroy') }}" class="item" style="color: rgb(255, 255, 255)">
                         Cerrar Sesión
                     </a>
@@ -152,12 +156,14 @@
                         <a class="item" href="{{ route('municipio.create') }}">Crear
                         </a>
                     </div>
-
                     <a href="{{ route('view.venta') }}" class="item">
                         <i class="icon dollar sign"></i>
                         Ventas
                     </a>
-
+                    <a href="{{ route('seguimiento.pedidos') }}" class="item">
+                        <i class="icon eye"></i>
+                        Seguimientos
+                    </a>
                     <a href="{{ route('login.destroy') }}" class="item" style="color: rgb(255, 255, 255)">
                         <i class="icon sign-out"></i>
                         Salir

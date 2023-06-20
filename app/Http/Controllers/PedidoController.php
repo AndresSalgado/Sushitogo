@@ -69,7 +69,7 @@ class PedidoController extends Controller
 
     public function destroy($id)
     {
-        $pedido = Pedido::find($id);
+        $pedido = pedido::find($id);
 
         if (!$pedido) {
             return redirect('pedido/index')->with('Eliminado', 'No se encontró el pedido.');
@@ -77,12 +77,15 @@ class PedidoController extends Controller
 
         $usuario = $pedido->usuario;
 
-        $pedido->delete();
+        $pedido->deleted_by = auth()->user()->id;
+        $pedido->deleted_at = now();
+        $pedido->save();
 
         $usuario->notify(new PedidoCanceladoNotification($pedido));
 
-        return redirect('pedido/index')->with('Eliminado', 'El pedido se canceló, se envió un mensaje al correo del cliente y fue eliminado con éxito!!');
+        return redirect('pedido/index')->with('Eliminado', 'El pedido se canceló, se envió un mensaje al correo del cliente y fue marcado como eliminado con éxito!!');
     }
+
 
     public function update(Request $request)
     {
@@ -101,6 +104,7 @@ class PedidoController extends Controller
             $pedido->estado_1 = $estado_1_actual;
         }
 
+        $pedido->updated_by = auth()->user()->id;
         $pedido->save();
 
         if ($estado_proceso == 1) {

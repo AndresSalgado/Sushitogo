@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\producto;
 
 class Controller extends BaseController
 {
@@ -13,7 +14,8 @@ class Controller extends BaseController
 
     public function index(){
 
-        return view('Home');
+        $productos = producto::all();
+        return view('Home', compact('productos'));
     }
 
     public function vista(){

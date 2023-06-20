@@ -110,16 +110,6 @@
                     <tfoot>
                         <tr>
                             <th colspan="2"></th>
-                            <th>SubTotal</th>
-                            <th>${{ $Pedido->subtotal }}</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2"></th>
-                            <th>Precio Envío:</th>
-                            <th>${{ $Pedido->costoEnvio }}</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2"></th>
                             <th>Total</th>
                             <th>${{ $Pedido->total }}</th>
                         </tr>

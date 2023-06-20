@@ -85,15 +85,12 @@ class CartController extends Controller
 
         if (Cart::getContent()->count() > 0) :
             //procesamiento
-            $precioEnvio = Auth::user()->municipio->PrecioEnvio;
             $municipio = Auth::user()->municipio->NombreMunicipio;
             $direccion = Auth::user()->direccion;
 
             $pedido = new pedido();
             $pedido->codigo = 'COD: ' . uniqid();
-            $pedido->subtotal = Cart::getSubTotal();
-            $pedido->costoEnvio = $precioEnvio;
-            $pedido->total = Cart::getSubTotal() + $precioEnvio;
+            $pedido->total = Cart::getSubTotal();
             $pedido->estado_1 = 0;
             $pedido->estado_2 = 0;
             $pedido->user_id = Auth::user()->id;

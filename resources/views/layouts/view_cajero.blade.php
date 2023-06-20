@@ -27,8 +27,16 @@
                             <img src="{{ asset('Img/logox1.png') }}" alt="">
                         </div>
                     </a>
-                    <a class="item right" href="{{ route('cajero.index') }}">
-                        Bienvenido a la vista de Cajero
+                    <a class="item right">
+                        <div class="ui small horizontal divided list">
+                            <div class="item">
+                                <img src="{{ asset('Img/jenny.jpg') }}" class="ui mini circular image">
+                                <div class="content">
+                                    <div class="ui header" style="color: rgb(255, 255, 255)">Bienvenido a la vista de Cajero</div>
+                                    {{ Auth::user()->name }}
+                                </div>
+                            </div>
+                        </div>
                     </a>
                     <div class="right menu">
                         <div class="item">

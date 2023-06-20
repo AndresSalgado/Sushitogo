@@ -33,7 +33,7 @@ class UsuarioController extends Controller
     {
 
         $municipio = municipio::all();
-        $role = Role::all();
+        $role = Role::whereIn('id', [2, 3])->get();
         return view('usuario.crear', compact('municipio', 'role'));
     }
 
@@ -84,11 +84,14 @@ class UsuarioController extends Controller
     //Aqui carga la vista para actualizar usuario desde el admin
     public function edit($id)
     {
+        $user = User::findOrFail($id);
 
         $municipio = municipio::all();
-        $role = Role::all();
+        $role = Role::whereIn('id', [2, 3])->get();
         $update = user::FindOrFail($id);
-        return view('usuario.editar', compact('update', 'municipio', 'role'));
+        $restrictedUserId = 1;
+
+        return view('usuario.editar', compact('update', 'municipio', 'role', 'user', 'restrictedUserId'));
     }
 
     //Aqui el usuario actualiza sus datos

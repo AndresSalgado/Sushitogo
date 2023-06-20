@@ -21,61 +21,6 @@
             @if (count(Cart::getContent()))
                 <div class="ui stackable grid">
                     <div class="twelve wide computer twelve wide tablet sixteen wide mobile column">
-                        {{-- <table class="ui single line table">
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
-                                <th>Accion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (Cart::getContent() as $p)
-                                <tr>
-                                    <td>
-                                        {{ $p->name }}
-                                    </td>
-                                    <td>
-                                        ${{ $p->price }}
-                                    </td>
-                                    <td>
-                                        <div class="quantity-input">
-                                            <button class="ui tiny button icon red"
-                                                onclick="decreaseQuantity({{ $p->id }})">
-                                                <i class="minus icon"></i>
-                                            </button>
-                                            <div class="ui tiny input">
-                                                <input type="number" min="1" max="10"
-                                                    value="{{ $p->quantity }}" id="quantity-{{ $p->id }}"
-                                                    name="quantity" class="update-cart" data-id="{{ $p->id }}">
-                                            </div>
-                                            <button class="ui tiny button icon green"
-                                                onclick="increaseQuantity({{ $p->id }})">
-                                                <i class="plus icon"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        ${{ Cart::get($p->id)->getPriceSum() }}
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('cart.remove') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $p->id }}">
-                                            <span class="right floated">
-                                                <button type="submit" class="ui circular icon button" id="boton"><i
-                                                        class="close icon"></i>
-                                                </button>
-                                            </span>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table> --}}
-
                         {{-- Vista desde un movil --}}
                         <div class="caja3">
                             <div class="ui segment">
@@ -152,33 +97,41 @@
                                 <div class="item">
                                     <table class="ui very basic table">
                                         <thead>
-                                            <th colspan="2">
-                                                Total Carrito
-                                            </th>
+                                            <tr>
+                                                <th colspan="2">
+                                                    Total Carrito
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    Producto
+                                                </th>
+                                                <th>
+                                                    SubTotal
+                                                </th>
+                                            </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Subtotal:</td>
-                                                <td>${{ Cart::getTotal() }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Precio Envio:
-                                                </td>
-                                                <td>
-                                                    ${{ $update->municipio->PrecioEnvio }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Total:
-                                                </td>
-                                                <td>
-                                                    ${{ Cart::getTotal() + $update->municipio->PrecioEnvio }}
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                        @foreach (Cart::getContent() as $p)
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        {{ $p->name }}
+                                                    </td>
+                                                    <td>
+                                                        ${{ Cart::get($p->id)->getPriceSum() }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        @endforeach
                                         <tfoot>
+                                            <tr>
+                                                <th style="font-weight: bold">
+                                                    Total:
+                                                </th>
+                                                <th style="font-weight: bold">
+                                                    ${{ Cart::getTotal() }}
+                                                </th>
+                                            </tr>
                                             <tr>
                                                 <th colspan="2">
                                                     <a data-target=".ui.modal" id="show">
@@ -392,19 +345,11 @@
                                             @endforeach
                                             <tfoot>
                                                 <tr>
-                                                    <th>
-                                                        Costo Envío:
-                                                    </th>
-                                                    <th>
-                                                        ${{ $update->municipio->PrecioEnvio }}
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th>
+                                                    <th style="font-weight: bold">
                                                         Total:
                                                     </th>
-                                                    <th>
-                                                        ${{ Cart::getTotal() + $update->municipio->PrecioEnvio }}
+                                                    <th style="font-weight: bold">
+                                                        ${{ Cart::getTotal() }}
                                                     </th>
                                                 </tr>
                                                 <tr>
@@ -428,7 +373,7 @@
         @else
             <div class="ui info message">
                 <div class="header">
-                    No haz Iniciado Sesion
+                    No has iniciado sesión
                 </div>
                 <div class="content">
                     <p>Debe iniciar sesión para usar el carrito de compras</p>

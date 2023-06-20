@@ -53,7 +53,6 @@
                 <table class="ui celled table">
                     <thead>
                         <tr>
-                            {{-- <th>N°</th> --}}
                             <th>Cantidad</th>
                             <th>Producto</th>
                             <th>Precio</th>
@@ -63,9 +62,6 @@
                     <tbody>
                         @foreach ($detalle as $m)
                             <tr>
-                                {{-- <td>
-                                    {{ $m->id }}
-                                </td> --}}
                                 <td>
                                     {{ $m->cantidad }}
                                 </td>
@@ -84,18 +80,8 @@
                     <tfoot>
                         <tr>
                             <th colspan="2"></th>
-                            <th>SubTotal:</th>
-                            <th>${{ $detalle[0]->pedido->subtotal }}</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2"></th>
-                            <th>Precio Envío:</th>
-                            <th>${{ $detalle[0]->pedido->costoEnvio }}</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2"></th>
-                            <th>Total:</th>
-                            <th>${{ $detalle[0]->pedido->total }}</th>
+                            <th style="font-weight: bold">Total:</th>
+                            <th style="font-weight: bold">${{ $detalle[0]->pedido->total }}</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -107,7 +93,7 @@
                 <a href="{{ route('pedido.index') }}">
                     <button class="ui blue button">
                         <i class="ui backward icon"></i>
-                        Atras
+                        Atrás
                     </button>
                 </a>
             </div>

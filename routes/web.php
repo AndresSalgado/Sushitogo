@@ -87,6 +87,9 @@ Route::get('/estadisticas/ventas', [AdminController::class, 'ventas'])
 
 Route::post('estadisticas/reiniciar', [PedidoController::class, 'reiniciarEstadisticas'])
     ->name('estadisticas.reiniciar');
+
+Route::get('/seguimiento-pedidos', [AdminController::class, 'seguimiento'])
+    ->name('seguimiento.pedidos');
 #endregion
 
 #region Cajero

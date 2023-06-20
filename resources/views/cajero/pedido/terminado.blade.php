@@ -25,39 +25,49 @@
                 <div class="ui link cards">
                     @foreach ($pedido as $m)
                         @if ($m->estado_2)
-                            <a href="{{ route('pedido.detalle', ['id' => $m->id]) }}">
-                                <div class="card">
-                                    <div class="content">
-                                        <div class="header">
-                                            <h4 style="color: rgb(0, 0, 0); padding: 10px 10px 2px 10px;">
-                                                {{ $m->codigo }}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <hr style="border: 1px solid rgb(224, 224, 224)">
-                                    <div class="content">
-                                        <h4 style="color: rgb(0, 0, 0); padding: 10px 10px 2px 10px;">
-                                            {{ $m->usuario->name }}
-                                        </h4>
-                                        <div class="event">
-                                            <div class="content">
-                                                <h5 style="color: rgb(0, 0, 0); padding: 2px 10px 10px 10px;">
-                                                    Fecha: {{ $m->created_at }}
-                                                </h5>
+                            @php
+                                $pedido_completado_at = $m->updated_at;
+                                $hora_actual = now();
+                                $hora_limite = $pedido_completado_at->addHours(12);
+                                $hora_pasada = $hora_actual->greaterThan($hora_limite);
+                                $mostrar_pedido = !$hora_pasada;
+                            @endphp
+
+                            @if ($mostrar_pedido)
+                                <a href="{{ route('pedido.detalle', ['id' => $m->id]) }}">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="header">
+                                                <h4 style="color: rgb(0, 0, 0); padding: 10px 10px 2px 10px;">
+                                                    {{ $m->codigo }}
+                                                </h4>
                                             </div>
                                         </div>
+                                        <hr style="border: 1px solid rgb(224, 224, 224)">
+                                        <div class="content">
+                                            <h4 style="color: rgb(0, 0, 0); padding: 10px 10px 2px 10px;">
+                                                {{ $m->usuario->name }}
+                                            </h4>
+                                            <div class="event">
+                                                <div class="content">
+                                                    <h5 style="color: rgb(0, 0, 0); padding: 2px 10px 10px 10px;">
+                                                        Fecha: {{ $m->created_at }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="extra content">
+                                            <a class="item"></a>
+                                            <span class="right floated">
+                                                <a href="{{ route('Factura.detalle', ['id' => $m->id]) }}"
+                                                    class="ui icon button circular gray">
+                                                    <i class="file pdf icon"></i>
+                                                </a>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="extra content">
-                                        <a class="item"></a>
-                                        <span class="right floated">
-                                            <a href="{{ route('Factura.detalle', ['id' => $m->id]) }}"
-                                                class="ui icon button circular gray">
-                                                <i class="file pdf icon"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            @endif
                         @endif
                     @endforeach
                 </div>

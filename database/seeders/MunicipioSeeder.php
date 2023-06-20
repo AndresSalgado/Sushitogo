@@ -16,8 +16,7 @@ class MunicipioSeeder extends Seeder
     public function run()
     {
         $municipio = new municipio;
-        $municipio->NombreMunicipio = 'Medellin';
-        $municipio->PrecioEnvio = 10000;
+        $municipio->NombreMunicipio = 'Medellín';
         $municipio->save();
     }
 }

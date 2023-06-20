@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',150);
-            $table->double('precio',7,1);
+            $table->double('precio',8,1);
             $table->string('descripcion',255);
             $table->string('imagen',255);
             $table->boolean('estado')->default(1);

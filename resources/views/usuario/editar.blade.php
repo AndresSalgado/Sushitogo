@@ -80,10 +80,11 @@
                             <label for="">Rol Usuario: </label>
                         </div>
 
-                        <select name="role_id" class="ui selection dropdown">
+                        <select name="role_id" class="ui selection dropdown" @if ($user->id == $restrictedUserId) disabled @endif>
                             @foreach ($role as $r)
                                 <option value="{{ $r->id }}" @if ($r->id == $update->role_id) selected @endif>
-                                    {{ $r->NombreRole }}</option>
+                                    {{ $r->NombreRole }}
+                                </option>
                             @endforeach
                         </select>
 

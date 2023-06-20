@@ -47,4 +47,26 @@ class AdminController extends Controller
 
         return view('admin.venta.venta', compact('estadisticas', 'totalVentasMes', 'totalPedidosMes'));
     }
+
+    public function seguimiento()
+    {
+        $pedidosEstado1 = pedido::whereNotNull('updated_by')
+            ->whereNotNull('estado_1')
+            ->with('updatedBy')
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
+
+        $pedidosEstado2 = pedido::whereNotNull('updated_by')
+            ->whereNotNull('estado_2')
+            ->with('updatedBy')
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
+
+        $pedidosEliminados = pedido::onlyTrashed()
+            ->with('deletedBy')
+            ->orderBy('deleted_at', 'desc')
+            ->paginate(10);
+
+        return view('admin.seguimiento.pedidos', compact('pedidosEstado1', 'pedidosEstado2', 'pedidosEliminados'));
+    }
 }

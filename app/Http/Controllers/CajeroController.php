@@ -20,7 +20,7 @@ class CajeroController extends Controller
             ->orWhere('pedidos.estado_2', 'like', '%' . $search . '%')
             ->orderBy('updated_at', 'desc')
             ->orWhere('users.name', 'like', '%' . $search . '%')
-            ->paginate(7);
+            ->paginate(12);
 
         return view('cajero.pedido.index', compact('pedido'));
     }

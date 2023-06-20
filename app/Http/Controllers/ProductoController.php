@@ -40,7 +40,7 @@ class ProductoController extends Controller
 
         $producto->validate([
             'nombre' => 'required',
-            'precio' => 'required',
+            'precio' => 'required|numeric|min:1|max:9999999',
             'descripcion' => 'required',
             'imagen' => 'required|image|max:2048',
             'carta_id' => 'required'
@@ -95,7 +95,7 @@ class ProductoController extends Controller
     {
         $producto->validate([
             'nombre' => 'required',
-            'precio' => 'required',
+            'precio' => 'required|numeric|min:1|max:9999999',
             'descripcion' => 'required',
             'carta_id' => 'required',
         ]);

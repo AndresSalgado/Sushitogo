@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class municipio extends Model
 {
     use HasFactory;
-    protected $fillable = ['NombreMunicipio', 'PrecioEnvio'];
+    protected $fillable = ['NombreMunicipio'];
 
     public function usuario()
     {

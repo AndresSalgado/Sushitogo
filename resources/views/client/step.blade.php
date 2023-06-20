@@ -30,7 +30,7 @@
                         $mostrar_pedido = !($estado_terminado && $hora_pasada);
                     @endphp
                     @if ($mostrar_pedido)
-                        <div class="ui very padded segment">
+                        <div class="ui very padded segment" style="text-align: center">
                             <div class="ui large top attached label" style="background-color: #00CCFF">
                                 <div class="ui large horizontal divided list">
                                     <div class="item">
@@ -64,15 +64,9 @@
                                 <div
                                     class="{{ $pedido->estado_1 == 1 && $pedido->estado_2 != 1 ? 'completed' : 'disabled' }} step">
                                     <div class="content">
-                                        <div class="title">Pedido Aceptado</div>
-                                        <div class="description">Su pedido fue Aceptado</div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="{{ $pedido->estado_1 == 1 && $pedido->estado_2 != 1 ? 'completed' : 'disabled' }} step">
-                                    <div class="content">
                                         <div class="title">Pedido en Proceso</div>
-                                        <div class="description">Su pedido esta en proceso</div>
+                                        <div class="description">Su pedido está en proceso. Tardará entre 30 minutos y una 1 hora en llegar
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="{{ $pedido->estado_2 ? 'completed' : 'disabled' }} step">
@@ -104,7 +98,7 @@
         @else
             <div class="ui info message">
                 <div class="header">
-                    No haz Iniciado Sesion
+                    No has iniciado sesión
                 </div>
                 <div class="content">
                     <p>Debe iniciar sesión para ver tus pedidos en proceso</p>

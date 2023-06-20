@@ -190,7 +190,7 @@
             @else
                 <div class="ui info message">
                     <div class="header">
-                        No haz Iniciado Sesion
+                        No has iniciado Sesión
                     </div>
                     <div class="content">
                         <p>Debe iniciar sesión para ver su perfil</p>

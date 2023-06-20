@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('municipios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('NombreMunicipio', 150);
-            $table->double('PrecioEnvio', 7, 1);
             $table->timestamps();
         });
     }

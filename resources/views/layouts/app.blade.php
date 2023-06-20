@@ -12,6 +12,13 @@
     <link rel="shortcut icon" href="{{ asset('Img/logox1.png') }}" type="image/x-icon">
     <script src="{{ asset('Js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('Js/semantic.js') }}"></script>
+    {{-- links para el carrusel --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
     <title>@yield('title') - Menu</title>
 
 </head>
@@ -19,7 +26,6 @@
 <body>
 
     <div class="ui grid">
-
         <div class="computer only row">
             <div class="column">
                 <div class="ui inverted segment">
@@ -60,7 +66,8 @@
                                     <a class="item" href="{{ route('Historial.view') }}"><i class="book icon"></i>
                                         HISTORIAL
                                     </a>
-                                    <a class="item" href="{{ route('step.view') }}"><i class="clipboard list icon"></i>
+                                    <a class="item" href="{{ route('step.view') }}"><i
+                                            class="clipboard list icon"></i>
                                         PROCESO PEDIDO
                                     </a>
                                     <a class="item" href="{{ route('login.destroy') }}">
@@ -153,18 +160,11 @@
     @yield('content')
 
     <div id="footer">
-
         <div class="ui equal width grid">
-
             <div class="column"></div>
-
-
         </div>
-
         <div class="ui equal width grid">
-
             <div class="column">
-
                 <table class="ui very basic table">
                     <thead>
                         <tr>
@@ -195,11 +195,8 @@
                         </tr>
                     </thead>
                 </table>
-
             </div>
-
             <div class="column">
-
                 <table class="ui very basic table">
                     <thead>
                         <tr>
@@ -223,30 +220,23 @@
                         </tr>
                     </thead>
                 </table>
-
             </div>
-
         </div>
-
         <div class="ui grid">
             <div class="four column row">
                 <div class="left floated column">
                     Colombia, Antioquia, Medellin.
                 </div>
-
                 <div class="right floated column">
                     <button class="ui circular facebook icon button">
                         <i class="facebook icon"></i>
                     </button>
-
                     <button class="ui circular violet icon button">
                         <i class="instagram icon"></i>
                     </button>
-
                     <button class="ui circular green icon button">
                         <i class="whatsapp icon"></i>
                     </button>
-
                     <button class="ui circular red icon button">
                         <i class="envelope icon"></i>
                     </button>

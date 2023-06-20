@@ -22,7 +22,7 @@
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese un nombre</p>
+                                    <p>* Por favor, ingrese un nombre</p>
                                 </div>
                             </div>
                         @enderror
@@ -30,7 +30,7 @@
                         <div class="field">
                             <div id="nombreError" class="ui mini negative message hidden">
                                 <i class="close icon"></i>
-                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                                <p>Por favor, llene el campo nombre sin espacios en blanco</p>
                             </div>
                         </div>
                     </div>
@@ -40,16 +40,16 @@
                             <label for="">Precio Producto: </label>
                         </div>
 
-                        <input type="number" name="precio" id="precio" min="1" max="500000"
+                        <input type="number" name="precio" id="precio"
                             value="{{ $update->precio }}">
-                        @error('precio')
+                            @if ($errors->has('precio'))
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese un precio</p>
+                                    <p>* Por favor, ingrese un precio al producto entre 1 y 7 dígitos</p>
                                 </div>
                             </div>
-                        @enderror
+                        @endif
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                             <div class="field">
                                 <div class="ui mini negative message">
                                     <i class="close icon"></i>
-                                    <p>* Por favor ingrese una descripcion</p>
+                                    <p>* Por favor, ingrese una descripcion</p>
                                 </div>
                             </div>
                         @enderror
