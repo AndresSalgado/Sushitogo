@@ -10,47 +10,28 @@
             <h1 class="titulo">Actualizar Municipio</h1>
             <form class="ui form" action="{{ route('updateBdMunicipio') }}" method="post" id="municipioForm">
                 @csrf
-
-                <div class="two fields">
-                    <div class="field">
-                        <div class="ui large black label">
-                            <label for="">Nombre Municipio: </label>
-                        </div>
-
-                        <input type="hidden" name="id" value="{{ $update->id }}">
-                        <input type="text" name="NombreMunicipio" id="NombreMunicipio"
-                            value="{{ $update->NombreMunicipio }}">
-                        @error('NombreMunicipio')
-                            <div class="field">
-                                <div class="ui mini negative message">
-                                    <i class="close icon"></i>
-                                    <p>* Por favor ingrese un Municipio</p>
-                                </div>
-                            </div>
-                        @enderror
-
-                        <div class="field">
-                            <div id="nombreError" class="ui mini negative message hidden">
-                                <i class="close icon"></i>
-                                <p>Por favor llene el campo nombre sin espacios en blanco</p>
-                            </div>
-                        </div>
+                <div class="field">
+                    <div class="ui large black label">
+                        <label for="">Nombre Municipio: </label>
                     </div>
 
-                    <div class="field">
-                        <div class="ui large black label">
-                            <label for="">Precio Envío: </label>
-                        </div>
-
-                        <input type="number" name="PrecioEnvio" id="PrecioEnvio" value="{{ $update->PrecioEnvio }}">
-                        @error('PrecioEnvio')
-                            <div class="field">
-                                <div class="ui mini negative message">
-                                    <i class="close icon"></i>
-                                    <p>* Por favor ingrese un precio para el envío</p>
-                                </div>
+                    <input type="hidden" name="id" value="{{ $update->id }}">
+                    <input type="text" name="NombreMunicipio" id="NombreMunicipio"
+                        value="{{ $update->NombreMunicipio }}">
+                    @error('NombreMunicipio')
+                        <div class="field">
+                            <div class="ui mini negative message">
+                                <i class="close icon"></i>
+                                <p>* Por favor ingrese un Municipio</p>
                             </div>
-                        @enderror
+                        </div>
+                    @enderror
+
+                    <div class="field">
+                        <div id="nombreError" class="ui mini negative message hidden">
+                            <i class="close icon"></i>
+                            <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                        </div>
                     </div>
                 </div>
 
@@ -60,7 +41,6 @@
                         Actualizar
                     </button>
                 </div>
-
             </form>
 
             <div class="botones">

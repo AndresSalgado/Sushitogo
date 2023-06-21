@@ -76,7 +76,6 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Precio Envío</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -92,9 +91,6 @@
                         </td>
                         <td>
                             {{ $m->NombreMunicipio }}
-                        </td>
-                        <td>
-                            {{ $m->PrecioEnvio }}
                         </td>
                         <td>
                             <a href="{{ route('updateMunicipio', $m->id) }}">

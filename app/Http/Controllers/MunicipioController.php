@@ -13,7 +13,6 @@ class MunicipioController extends Controller
 
         $municipio = municipio::where('id', 'like', '%' . $search . '%')
             ->orWhere('NombreMunicipio', 'like', '%' . $search . '%')
-            ->orWhere('PrecioEnvio', 'like', '%' . $search . '%')
             ->paginate(5);
 
         return view('municipio.index', compact('municipio'));
@@ -29,12 +28,10 @@ class MunicipioController extends Controller
 
         $municipio->validate([
             'NombreMunicipio' => 'required',
-            'PrecioEnvio' => 'required'
         ]);
 
         $insertar = new municipio;
         $insertar->NombreMunicipio = $municipio->NombreMunicipio;
-        $insertar->PrecioEnvio = $municipio->PrecioEnvio;
         $insertar->save();
 
         return redirect('municipio')->with('Guardado', 'El municipio fue guardado con exito!!');
@@ -68,11 +65,9 @@ class MunicipioController extends Controller
     {
         $municipio->validate([
             'NombreMunicipio' => 'required',
-            'PrecioEnvio' => 'required'
         ]);
         $insertar = municipio::FindOrFail($municipio->id);
         $insertar->NombreMunicipio = $municipio->NombreMunicipio;
-        $insertar->PrecioEnvio = $municipio->PrecioEnvio;
         $insertar->update();
 
         return redirect('municipio')->with('Actualizado', 'El municipio fue actualizado con exito!!');

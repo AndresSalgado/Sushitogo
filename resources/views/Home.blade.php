@@ -4,47 +4,20 @@
 
 @section('content')
 
-    <div class="ui container">
+    {{-- <div class="ui container">
         <div class="ui segment">
             <div class="owl-carousel" id="product-carousel">
                 @foreach ($productos as $p)
-                    <div class="ui card">
-                        <div class="content">
-                            <img class="right floated mini ui image" src="{{ asset($p->imagen) }}">
-                            <div class="header">
-                                <h3>{{ $p->nombre }}</h3>
-                            </div>
-                            <div class="meta">
-                                Precio ${{ $p->precio }}
-                            </div>
-                            <div class="description">
-                                {{ $p->descripcion }}
-                            </div>
-                        </div>
-                        <div class="extra content">
-                            @if (auth()->check())
-                                <form action="{{ route('cart.store') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" value="{{ $p->id }}" name="producto_id" id="producto_id">
-                                    <input type="hidden" name="quantity" value="1" min="1">
-                                    <button type="submit" class="ui green compact icon button">
-                                        <i class="shopping basket icon"></i>
-                                        Agregar
-                                    </button>
-                                </form>
-                            @else
-                                <a href="{{ route('login.destroy') }}" class="ui green compact icon button">
-                                    <i class="shopping basket icon"></i>
-                                    Agregar
-                                </a>
-                            @endif
-                        </div>
+                    <div class="ui link card">
+                        <a class="image" href="{{ route('Producto.view') }}">
+                            <img src="{{ asset($p->imagen) }}">
+                        </a>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
-    <br><br><br>
+    <br><br><br> --}}
 
     <div class="ui justified container">
         <div class="ui raised very padded text container segment">
@@ -55,8 +28,10 @@
                 combinen en un alimento bajo en grasa y con todo el sabor natural de la gastronomía japonesa.
             </p>
             <p class="">
-                APRECIADO CLIENTE. Para nosotros es un motivo de orgullo darles el mejor servicio y los mejores productos.
-                Te invitamos a descubrir este sitio web para que te enteres de nuestro menú, precios, promociones y dejanos
+                APRECIADO CLIENTE. Para nosotros es un motivo de orgullo darles el mejor servicio y los mejores
+                productos.
+                Te invitamos a descubrir este sitio web para que te enteres de nuestro menú, precios, promociones y
+                dejanos
                 tus comentarios en nuestras redes sociales.
             </p>
         </div>
@@ -70,20 +45,19 @@
                 speed: 500,
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-                nextArrow: '<button type="button" class="slick-next">Next</button>',
-                autoplay: true, // Agrega esta línea para habilitar el movimiento automático
-                autoplaySpeed: 3000, // Define la velocidad de desplazamiento automático en milisegundos
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1
-                        }
+                prevArrow: '<button type="button" class="slick-prev custom-button">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next custom-button">Next</button>',
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
                     }
-                ]
+                }]
             });
         });
     </script>
 
 @endsection
+
