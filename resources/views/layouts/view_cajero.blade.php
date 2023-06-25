@@ -32,7 +32,8 @@
                             <div class="item">
                                 <img src="{{ asset('Img/jenny.jpg') }}" class="ui mini circular image">
                                 <div class="content">
-                                    <div class="ui header" style="color: rgb(255, 255, 255)">Bienvenido a la vista de Cajero</div>
+                                    <div class="ui header" style="color: rgb(255, 255, 255)">Bienvenido a la vista de
+                                        Cajero</div>
                                     {{ Auth::user()->name }}
                                 </div>
                             </div>

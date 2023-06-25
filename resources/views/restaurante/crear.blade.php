@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <div class="ui container">
 
         <div class="ui segment" style="background-color: rgba(240, 240, 240, 0.791); padding: 100px;">

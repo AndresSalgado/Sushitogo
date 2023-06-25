@@ -40,6 +40,7 @@ class CartController extends Controller
 
     public function checkout()
     {
+        session()->flash('showLoading', true);
 
         $municipio = municipio::all();
         $update = auth()->user();

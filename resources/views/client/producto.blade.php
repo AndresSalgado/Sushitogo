@@ -80,9 +80,6 @@
                     <h2 class="ui red tag label block header">{{ $c->nombre }}:</h2>
                 </div>
                 <div class="caja2">
-                    {{-- <div class="tituloCarta2">
-                        <h2 class="ui red tag label block header">{{ $c->nombre }}:</h2>
-                    </div> --}}
                     <div class="ui items">
                         @foreach ($producto as $p)
                             @if ($p->carta_id == $c->id)
@@ -101,6 +98,7 @@
                                                     @csrf
                                                     <input type="hidden" value="{{ $p->id }}" name="producto_id"
                                                         id="producto_id">
+                                                    <input type="hidden" name="quantity" value="1" min="1">
                                                     <span class="right floated">
                                                         <button type="submit" class="ui green compact icon button">
                                                             <i class="shopping basket icon"></i>

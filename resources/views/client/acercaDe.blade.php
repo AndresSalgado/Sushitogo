@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <div class="ui container">
         <div class="ui raised very padded text container segment">
             <h2 class="ui header">¿QUIENES SOMOS?</h2>

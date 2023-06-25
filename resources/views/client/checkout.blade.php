@@ -1,3 +1,8 @@
+@if (session('showLoading'))
+    @include('loading')
+    @php session()->forget('showLoading'); @endphp
+@endif
+
 @extends('layouts.app')
 
 @section('title', 'Carrito')
@@ -168,7 +173,8 @@
                 <div class="header">
                     <h2>Pedido</h2>
                 </div>
-                <div class="scrolling content">
+                <i class="close icon"></i>
+                <div class="content">
                     <div class="ui stackable grid">
                         <div class="twelve wide computer twelve wide tablet sixteen wide mobile column">
                             @if (session('success'))
@@ -181,7 +187,7 @@
                             @endif
                             <div class="ui segment" style="background-color: rgba(255, 255, 255, 0.791);padding: 10%;">
                                 <h1 class="titulo">Verifica tu Información</h1>
-                                <form class="ui form" action="{{ route('carrito.perfil.actualizar') }}" method="post">
+                                <form class="ui form" action="{{ route('carrito.perfil.actualizar') }}" method="post" id="myForm">
                                     @csrf
                                     @method('PUT')
 
@@ -193,8 +199,8 @@
 
                                             <input type="hidden" name="id" value="{{ $update->id }}">
                                             <input type="text" name="name" id="name"
-                                                value="{{ $update->name }}" pattern="^(?!\s).*$"
-                                                title="No se permiten espacios en blanco">
+                                                value="{{ $update->name }}">
+
                                             @error('name')
                                                 <div class="field">
                                                     <div class="ui mini negative message">
@@ -203,6 +209,13 @@
                                                     </div>
                                                 </div>
                                             @enderror
+
+                                            <div class="field">
+                                                <div id="nameError" class="ui mini negative message hidden">
+                                                    <i class="close icon"></i>
+                                                    <p>Por favor llene el campo nombre sin espacios en blanco</p>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="field">
@@ -210,7 +223,7 @@
                                                 <label for="">Numero Telefono: </label>
                                             </div>
 
-                                            <input type="text" name="telefono" id="telefono"
+                                            <input type="number" name="telefono" id="telefono"
                                                 value="{{ $update->telefono }}">
                                             @if ($errors->has('telefono'))
                                                 <div class="field">
@@ -253,8 +266,8 @@
                                             </div>
 
                                             <input type="text" name="direccion" id="direccion"
-                                                value="{{ $update->direccion }}" pattern="^(?!\s).*$"
-                                                title="No se permiten espacios en blanco">
+                                                value="{{ $update->direccion }}">
+
                                             @error('direccion')
                                                 <div class="field">
                                                     <div class="ui mini negative message">
@@ -263,6 +276,13 @@
                                                     </div>
                                                 </div>
                                             @enderror
+
+                                            <div class="field">
+                                                <div id="direccionError" class="ui mini negative message hidden">
+                                                    <i class="close icon"></i>
+                                                    <p>Por favor llene el campo dirección sin espacios en blanco</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

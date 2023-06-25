@@ -12,10 +12,6 @@
     <link rel="shortcut icon" href="{{ asset('Img/logox1.png') }}" type="image/x-icon">
     <script src="{{ asset('Js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('Js/semantic.js') }}"></script>
-    {{-- links para el carrusel --}}
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" /> --}}
 
     <title>@yield('title') - Menu</title>
 
@@ -246,10 +242,6 @@
     <script src="{{ asset('Js/Aplication.js') }}"></script>
     <script src="{{ asset('Js/Minimenu.js') }}"></script>
     <script src="{{ asset('Js/Validaciones.js') }}"></script>
-
-    {{-- links para el carrusel --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> --}}
 
     {{-- Script para aumentar automaticamente la cantidad de los productos --}}
     <script>

@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
     <div class="ui container">
         <div class="ui container">
 
